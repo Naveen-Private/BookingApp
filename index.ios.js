@@ -27,13 +27,9 @@ export default class BookingApp extends Component {
 
   render() {
     return (
-      <View>
-        <View style={styles.viewStyle}> 
-          </View>
-        
-        <Text> Sample Text Before ... 3 </Text>
-        <TouchableOpacity onPress={this.onButtonPress}>
-                <Text>Check for updates</Text>
+      <View style={styles.viewMainStyle}>
+        <TouchableOpacity onPress={this.onButtonPress} style={styles.buttonStyle }>
+                <Text style={styles.textStyle}> Check for updates</Text>
         </TouchableOpacity>
       </View>
     );
@@ -41,10 +37,24 @@ export default class BookingApp extends Component {
 }
 
 const styles = {
-
-  viewStyle: {
-      height: 100,
-      backgroundColor:'#D4D0CB'
+  viewMainStyle: {
+    backgroundColor:'#F7F2EB',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right:0,
+    bottom:0
+  },
+  buttonStyle: {
+    position: 'absolute',
+    bottom:0,
+    width:'100%',
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  textStyle:{
+    color:'#370141',
+    fontSize: 20
   }
 
 }
