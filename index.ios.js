@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import codePush from "react-native-code-push";
 
@@ -29,7 +23,7 @@ export default class BookingApp extends Component {
     return (
       <View style={styles.viewMainStyle}>
         <TouchableOpacity onPress={this.onButtonPress} style={styles.buttonStyle }>
-                <Text style={styles.textStyle}> Check for updates</Text>
+                <Text style={styles.textStyle}> Click here for updates</Text>
         </TouchableOpacity>
       </View>
     );
