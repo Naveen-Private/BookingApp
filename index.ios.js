@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import codePush from "react-native-code-push";
 
+import LoginScreen from './src/forms/LoginScreen';
+
 import {
   AppRegistry,
   StyleSheet,
@@ -22,6 +24,7 @@ export default class BookingApp extends Component {
   render() {
     return (
       <View style={styles.viewMainStyle}>
+        <LoginScreen />
         <TouchableOpacity onPress={this.onButtonPress} style={styles.buttonStyle }>
                 <Text style={styles.textStyle}> Click here for updates</Text>
         </TouchableOpacity>
@@ -48,6 +51,7 @@ const styles = {
   },
   textStyle:{
     color:'#370141',
+    backgroundColor:'transparent',
     fontSize: 20
   }
 
