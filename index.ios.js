@@ -5,49 +5,48 @@
  */
 
 import React, { Component } from 'react';
+import codePush from "react-native-code-push";
+
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity
 } from 'react-native';
 
+let codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL };
+
 export default class BookingApp extends Component {
+  onButtonPress() {
+    codePush.sync({
+        updateDialog: true,
+        installMode: codePush.InstallMode.IMMEDIATE
+    });
+}
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View>
+        <View style={styles.viewStyle}> 
+          </View>
+        
+        <Text> Sample Text Before ... 3 </Text>
+        <TouchableOpacity onPress={this.onButtonPress}>
+                <Text>Check for updates</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+const styles = {
 
+  viewStyle: {
+      height: 100,
+      backgroundColor:'#D4D0CB'
+  }
+
+}
+BookingApp = codePush(codePushOptions)(BookingApp);
 AppRegistry.registerComponent('BookingApp', () => BookingApp);

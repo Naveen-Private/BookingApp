@@ -1,3 +1,4 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">RvtoKUP4XwkpeAlLhxhLcHgu32LA2661c99e-2a40-4808-a64b-6f22f375000a</string>
     <string name="app_name">BookingApp</string>
 </resources>
