@@ -1,11 +1,11 @@
-'use strict';
-import React, {Component, PropTypes} from "react";
-import {StyleSheet, Animated} from "react-native";
+"use strict";
+import React, { Component, PropTypes } from "react";
+import { StyleSheet, Animated } from "react-native";
 
 export default class FloatingLabel extends Component {
   constructor(props: Object) {
     super(props);
-    if(props.dense) {
+    if (props.dense) {
       this.posTop = 16;
       this.posBottom = 22;
       this.fontLarge = 13;
@@ -16,15 +16,15 @@ export default class FloatingLabel extends Component {
       this.fontLarge = 16;
       this.fontSmall = 12;
     }
-    let posTop = (props.hasValue) ? this.posTop : this.posBottom;
-    let fontSize = (props.hasValue) ? this.fontSmall : this.fontLarge;
+    let posTop = props.hasValue ? this.posTop : this.posBottom;
+    let fontSize = props.hasValue ? this.fontSmall : this.fontLarge;
     this.state = {
       top: new Animated.Value(posTop),
       fontSize: new Animated.Value(fontSize)
     };
   }
-  shouldComponentUpdate(nextProps: Object, nextState: Object) : bool {
-    return (this.props.hasValue !== nextProps.hasValue) ? false : true;
+  shouldComponentUpdate(nextProps: Object, nextState: Object): boolean {
+    return this.props.hasValue !== nextProps.hasValue ? false : true;
   }
   floatLabel() {
     Animated.parallel([
@@ -50,23 +50,23 @@ export default class FloatingLabel extends Component {
       })
     ]).start();
   }
-  render() : Object {
-    let {
-      label,
-      labelColor,
-      highlightColor,
-      style
-    } = this.props;
+  render(): Object {
+    let { label, labelColor, highlightColor, style } = this.props;
     return (
       <Animated.Text
-        style={[{
-          fontSize: this.state.fontSize,
-          top: this.state.top,
-          color: labelColor
-        }, styles.labelText, this.props.isFocused && {
-          color: highlightColor
-        }, style]}
-        onPress={()=> {
+        style={[
+          {
+            fontSize: this.state.fontSize,
+            top: this.state.top,
+            color: labelColor
+          },
+          styles.labelText,
+          this.props.isFocused && {
+            color: highlightColor
+          },
+          style
+        ]}
+        onPress={() => {
           this.props.focusHandler();
         }}
       >
@@ -87,8 +87,8 @@ FloatingLabel.propTypes = {
 
 const styles = StyleSheet.create({
   labelText: {
-    position: 'absolute',
+    position: "absolute",
     left: 5,
-    backgroundColor: 'rgba(0,0,0,0)'
+    backgroundColor: "rgba(0,0,0,0)"
   }
 });

@@ -1,21 +1,21 @@
-'use strict';
-import React, {Component, PropTypes} from "react";
-import {View, StyleSheet, Animated} from "react-native";
+"use strict";
+import React, { Component, PropTypes } from "react";
+import { View, StyleSheet, Animated } from "react-native";
 
 export default class Underline extends Component {
   constructor(props: Object) {
     super(props);
     this.state = {
-      lineLength: new Animated.Value(0),
+      lineLength: new Animated.Value(0)
     };
-   // this.wrapperWidth = 0;
+    // this.wrapperWidth = 0;
   }
   componentDidMount() {
     requestAnimationFrame(() => {
       if (this.refs.wrapper == null) {
         return;
       }
-      const container = this.refs.wrapper;  // un-box animated view
+      const container = this.refs.wrapper; // un-box animated view
       container.measure((left, top, width, height) => {
         this.wrapperWidth = width;
       });
@@ -34,24 +34,26 @@ export default class Underline extends Component {
     }).start();
   }
   render() {
-    let {
-      borderColor,
-      highlightColor
-    } = this.props;
+    let { borderColor, highlightColor } = this.props;
     return (
       <View
-        style={[styles.underlineWrapper, {
-          backgroundColor: borderColor
-        }]}
+        style={[
+          styles.underlineWrapper,
+          {
+            backgroundColor: borderColor
+          }
+        ]}
         ref="wrapper"
       >
         <Animated.View
-          style={[{
-            width: this.state.lineLength,
-            height: 1,
-            backgroundColor: highlightColor
-          }]}>
-        </Animated.View>
+          style={[
+            {
+              width: this.state.lineLength,
+              height: 1,
+              backgroundColor: highlightColor
+            }
+          ]}
+        />
       </View>
     );
   }
@@ -66,6 +68,6 @@ Underline.propTypes = {
 const styles = StyleSheet.create({
   underlineWrapper: {
     height: 1,
-    alignItems: 'center'
+    alignItems: "center"
   }
 });

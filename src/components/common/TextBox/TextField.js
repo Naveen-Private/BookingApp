@@ -1,9 +1,8 @@
+import React, { Component, PropTypes } from "react";
+import { View, TextInput, StyleSheet } from "react-native";
 
-import React, { Component, PropTypes } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
-
-import Underline from './Underline';
-import FloatingLabel from './FloatingLabel';
+import Underline from "./Underline";
+import FloatingLabel from "./FloatingLabel";
 
 class TextField extends Component {
   constructor(props: Object, context: Object) {
@@ -22,12 +21,12 @@ class TextField extends Component {
   isFocused() {
     return this.state.isFocused;
   }
-  componentWillReceiveProps(nextProps: Object){
-    if(this.props.text !== nextProps.value){
-      nextProps.value.length !== 0 ?
-        this.refs.floatingLabel.floatLabel()
+  componentWillReceiveProps(nextProps: Object) {
+    if (this.props.text !== nextProps.value) {
+      nextProps.value.length !== 0
+        ? this.refs.floatingLabel.floatLabel()
         : this.refs.floatingLabel.sinkLabel();
-      this.setState({text: nextProps.value});
+      this.setState({ text: nextProps.value });
     }
   }
   render() {
@@ -51,29 +50,42 @@ class TextField extends Component {
       ...props
     } = this.props;
     return (
-      <View style={[dense ? styles.denseWrapper : styles.wrapper, wrapperStyle]} ref="wrapper">
+      <View
+        style={[dense ? styles.denseWrapper : styles.wrapper, wrapperStyle]}
+        ref="wrapper"
+      >
         <TextInput
-          style={[dense ? styles.denseTextInput : styles.textInput, {
-            color: textColor
-          }, (this.state.isFocused && textFocusColor) ? {
-            color: textFocusColor
-          } : {}, (!this.state.isFocused && textBlurColor) ? {
-            color: textBlurColor
-          } : {}, inputStyle]}
+          style={[
+            dense ? styles.denseTextInput : styles.textInput,
+            {
+              color: textColor
+            },
+            this.state.isFocused && textFocusColor
+              ? {
+                  color: textFocusColor
+                }
+              : {},
+            !this.state.isFocused && textBlurColor
+              ? {
+                  color: textBlurColor
+                }
+              : {},
+            inputStyle
+          ]}
           onFocus={() => {
-            this.setState({isFocused: true});
+            this.setState({ isFocused: true });
             this.refs.floatingLabel.floatLabel();
-           this.refs.underline.expandLine();
+            this.refs.underline.expandLine();
             onFocus && onFocus();
           }}
           onBlur={() => {
-            this.setState({isFocused: false});
+            this.setState({ isFocused: false });
             !this.state.text.length && this.refs.floatingLabel.sinkLabel();
             this.refs.underline.shrinkLine();
             onBlur && onBlur();
           }}
-          onChangeText={(text) => {
-            this.setState({text});
+          onChangeText={text => {
+            this.setState({ text });
             onChangeText && onChangeText(text);
           }}
           ref="input"
@@ -95,7 +107,7 @@ class TextField extends Component {
           highlightColor={highlightColor}
           duration={duration}
           dense={dense}
-          hasValue={(this.state.text.length) ? true : false}
+          hasValue={this.state.text.length ? true : false}
           style={labelStyle}
         />
       </View>
@@ -124,12 +136,12 @@ TextField.propTypes = {
 
 TextField.defaultProps = {
   duration: 200,
-  labelColor: '#9E9E9E',
-  borderColor: '#FFFFFF',
-  textColor: '#000',
-  value: '',
+  labelColor: "#9E9E9E",
+  borderColor: "#FFFFFF",
+  textColor: "#000",
+  value: "",
   dense: false,
-  underlineColorAndroid: 'rgba(0,0,0,0)'
+  underlineColorAndroid: "rgba(0,0,0,0)"
 };
 
 const styles = StyleSheet.create({
@@ -137,13 +149,13 @@ const styles = StyleSheet.create({
     height: 60,
     paddingTop: 26,
     paddingBottom: 0,
-    position: 'relative'
+    position: "relative"
   },
   denseWrapper: {
     height: 60,
     paddingTop: 26,
     paddingBottom: 0,
-    position: 'relative'
+    position: "relative"
   },
   textInput: {
     fontSize: 16,
