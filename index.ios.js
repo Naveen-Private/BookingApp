@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import codePush from "react-native-code-push";
 import LoginScreen from "./src/forms/LoginScreen";
 import RegisterScreen from "./src/forms/RegisterScreen";
+import ProfileScreen from "./src/forms/ProfileScreen";
 import { StackNavigator } from "react-navigation";
 
 import {
@@ -67,7 +68,8 @@ BookingApp = codePush(codePushOptions)(BookingApp);
 
 const NavigationDetails = StackNavigator({
   Login: { screen: LoginScreen },
-  Register: { screen: RegisterScreen }
+  Register: { screen: RegisterScreen },
+  Profile:{screen: ProfileScreen}
 });
 
 AppRegistry.registerComponent("BookingApp", () => NavigationDetails);

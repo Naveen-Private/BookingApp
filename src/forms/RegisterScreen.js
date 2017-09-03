@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
-import { NavigationActions } from "react-navigation";
 import { PButtonComp } from "../components/common";
 
 class RegisterScreen extends Component {
@@ -16,6 +15,9 @@ class RegisterScreen extends Component {
       <PButtonComp textInput='Login Screen' onClickEvent={() =>{
         this.props.navigation.goBack()
          } }/>
+      <PButtonComp textInput='Profile Screen' onClickEvent={() =>{
+        navigate("Profile")
+        } }/>
        </View> 
       </View>
     );
